@@ -1,0 +1,22 @@
+name: layrz_state
+description: A fork of vxstate with added features and improvements.
+version: 1.0.0
+repository: https://github.com/goldenm-software/layrz_state
+
+topics:
+  - state-management
+  - layrz
+  - vxstate
+
+environment:
+  sdk: ">=3.9.0 <4.0.0"
+  flutter: ">=3.35.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0

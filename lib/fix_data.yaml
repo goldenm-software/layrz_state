@@ -1,0 +1,73 @@
+version: 1
+transforms:
+  - title: "VxState → LayrzState"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxState"
+    changes:
+      - kind: rename
+        newName: "LayrzState"
+
+  - title: "VxMutation → LayrzMutation"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxMutation"
+    changes:
+      - kind: rename
+        newName: "LayrzMutation"
+
+  - title: "VxStatus → LayrzStatus"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxStatus"
+    changes:
+      - kind: rename
+        newName: "LayrzStatus"
+
+  - title: "VxStore → LayrzStore"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxStore"
+    changes:
+      - kind: rename
+        newName: "LayrzStore"
+
+  - title: "VxInterceptor → LayrzInterceptor"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxInterceptor"
+    changes:
+      - kind: rename
+        newName: "LayrzInterceptor"
+
+  - title: "VxConsumer → LayrzConsumer"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxConsumer"
+    changes:
+      - kind: rename
+        newName: "LayrzConsumer"
+
+  - title: "VxBuilder → LayrzBuilder"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxBuilder"
+    changes:
+      - kind: rename
+        newName: "LayrzBuilder"
+
+  - title: "VxNotifier → LayrzNotifier"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxNotifier"
+    changes:
+      - kind: rename
+        newName: "LayrzNotifier"

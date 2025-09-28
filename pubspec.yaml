@@ -1,6 +1,6 @@
 name: layrz_state
 description: A fork of vxstate with added features and improvements.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/goldenm-software/layrz_state
 
 topics:

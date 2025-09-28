@@ -1,33 +1,24 @@
 version: 1
 transforms:
-  - title: "VxState → LayrzState"
+  - title: "Migrate from VxStateWidgetBuilder to StateWidgetBuilder"
     date: 2025-09-28
     element:
       uris: ["layrz_state.dart"]
-      class: "VxState"
+      class: "VxStateWidgetBuilder"
     changes:
       - kind: rename
-        newName: "LayrzState"
+        newName: "StateWidgetBuilder"
 
-  - title: "VxMutation → LayrzMutation"
-    date: 2025-09-28
-    element:
-      uris: ["layrz_state.dart"]
-      class: "VxMutation"
-    changes:
-      - kind: rename
-        newName: "LayrzMutation"
-
-  - title: "VxStatus → LayrzStatus"
+  - title: "Migrate from VxStatus to StateStatus"
     date: 2025-09-28
     element:
       uris: ["layrz_state.dart"]
       class: "VxStatus"
     changes:
       - kind: rename
-        newName: "LayrzStatus"
+        newName: "StateStatus"
 
-  - title: "VxStore → LayrzStore"
+  - title: "Migrate from VxStore to LayrzStore"
     date: 2025-09-28
     element:
       uris: ["layrz_state.dart"]
@@ -36,38 +27,65 @@ transforms:
       - kind: rename
         newName: "LayrzStore"
 
-  - title: "VxInterceptor → LayrzInterceptor"
+  - title: "Migrate from VxState to LayrzState"
     date: 2025-09-28
     element:
       uris: ["layrz_state.dart"]
-      class: "VxInterceptor"
+      class: "VxState"
     changes:
       - kind: rename
-        newName: "LayrzInterceptor"
+        newName: "LayrzState"
 
-  - title: "VxConsumer → LayrzConsumer"
+  - title: "Migrate from VxMutationBuilder to StateMutationBuilder"
     date: 2025-09-28
     element:
       uris: ["layrz_state.dart"]
-      class: "VxConsumer"
+      class: "VxMutationBuilder"
     changes:
       - kind: rename
-        newName: "LayrzConsumer"
+        newName: "StateMutationBuilder"
 
-  - title: "VxBuilder → LayrzBuilder"
+  - title: "Migrate from VxMutation to StateMutation"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxMutation"
+    changes:
+      - kind: rename
+        newName: "StateMutation"
+
+  - title: "Migrate from VxBuilder to StateBuilder"
     date: 2025-09-28
     element:
       uris: ["layrz_state.dart"]
       class: "VxBuilder"
     changes:
       - kind: rename
-        newName: "LayrzBuilder"
+        newName: "StateBuilder"
 
-  - title: "VxNotifier → LayrzNotifier"
+  - title: "Migrate from VxConsumer to StateConsumer"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxConsumer"
+    changes:
+      - kind: rename
+        newName: "StateConsumer"
+
+  - title: "Migrate from VxNotifier to StateNotifier"
     date: 2025-09-28
     element:
       uris: ["layrz_state.dart"]
       class: "VxNotifier"
     changes:
       - kind: rename
-        newName: "LayrzNotifier"
+        newName: "StateNotifier"
+
+  - title: "Migrate from VxInterceptor to LayrzStateInterceptor"
+    date: 2025-09-28
+    element:
+      uris: ["layrz_state.dart"]
+      class: "VxInterceptor"
+    changes:
+      - kind: rename
+        newName: "LayrzStateInterceptor"

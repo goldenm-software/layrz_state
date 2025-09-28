@@ -21,10 +21,10 @@ class StateNotifier<T> extends StatefulWidget {
   });
 
   @override
-  State<StateNotifier> createState() => StateNotifierState<T>();
+  State<StateNotifier<T>> createState() => _StateNotifierState<T>();
 }
 
-class StateNotifierState<T> extends State<StateNotifier> {
+class _StateNotifierState<T> extends State<StateNotifier<T>> {
   StreamSubscription? eventSub;
 
   @override

@@ -3,7 +3,7 @@ part of '../../layrz_state.dart';
 typedef StateMutationBuilder = StateMutation Function();
 
 abstract class StateMutation<T extends LayrzStore?> {
-  T? get store => LayrzState.store as T?;
+  T get store => LayrzState.store as T;
 
   StateStatus? status;
 

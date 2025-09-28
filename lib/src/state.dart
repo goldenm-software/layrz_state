@@ -2,7 +2,7 @@ part of '../layrz_state.dart';
 
 /// VxWidgetBuilder gives context and status back.
 /// Status are more useful when you use vx effects
-typedef StateWidgetBuilder<T> = Widget Function(BuildContext context, T store, StateStatus? status);
+typedef StateWidgetBuilder<T> = Widget Function(BuildContext context, T store, StateStatus status);
 
 /// Status about the current state
 // ignore: public_member_api_docs
@@ -14,7 +14,7 @@ abstract class LayrzStore {}
 
 /// The coordinating widget that keeps track of mutations
 /// and the notify the same to the listening widgets.
-class LayrzState extends StatelessWidget {
+class LayrzState<T> extends StatelessWidget {
   /// App's root widget
   final Widget? child;
 
@@ -89,29 +89,55 @@ class LayrzState extends StatelessWidget {
     LayrzState._interceptors = interceptors;
   }
 
+  static T of<T extends LayrzStore>(BuildContext context) {
+    assert(debugCheckHasLayrzState(context));
+    final _LayrzStateScope? scope = context.findAncestorWidgetOfExactType<_LayrzStateScope>();
+    return scope!.store as T;
+  }
+
+  static T? maybeOf<T extends LayrzStore?>(BuildContext context) {
+    final _LayrzStateScope? scope = context.findAncestorWidgetOfExactType<_LayrzStateScope>();
+    return scope?.store as T?;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: _events.stream,
-      builder: (context, _) {
-        // Copy all the mutations that executed before
-        // current build and clear that buffer
-        // ignore: prefer_typing_uninitialized_variables
-        var clone;
-        if (_buffer.isNotEmpty) {
-          clone = <Type>{}..addAll(_buffer);
-          _buffer.clear();
-        } else {
-          clone = _buffer;
-        }
+    return _LayrzStateScope(
+      store: store,
+      child: StreamBuilder(
+        stream: _events.stream,
+        builder: (context, _) {
+          // Copy all the mutations that executed before
+          // current build and clear that buffer
+          // ignore: prefer_typing_uninitialized_variables
+          var clone;
+          if (_buffer.isNotEmpty) {
+            clone = <Type>{}..addAll(_buffer);
+            _buffer.clear();
+          } else {
+            clone = _buffer;
+          }
 
-        // Rebuild inherited model with all the mutations
-        // inside "clone" as the aspects changed
-        return _StateModel(
-          recent: clone,
-          child: child!,
-        );
-      },
+          // Rebuild inherited model with all the mutations
+          // inside "clone" as the aspects changed
+          return _StateModel(
+            recent: clone,
+            child: child!,
+          );
+        },
+      ),
     );
   }
+}
+
+class _LayrzStateScope extends InheritedWidget {
+  final LayrzStore store;
+
+  const _LayrzStateScope({
+    required this.store,
+    required super.child,
+  });
+
+  @override
+  bool updateShouldNotify(_LayrzStateScope old) => true;
 }

@@ -22,10 +22,10 @@ class StateConsumer<T> extends StatefulWidget {
   });
 
   @override
-  State<StateConsumer> createState() => StateConsumerState<T>();
+  State<StateConsumer<T>> createState() => _StateConsumerState<T>();
 }
 
-class StateConsumerState<T> extends State<StateConsumer<T>> {
+class _StateConsumerState<T> extends State<StateConsumer<T>> {
   StreamSubscription? eventSub;
 
   @override
@@ -51,14 +51,17 @@ class StateConsumerState<T> extends State<StateConsumer<T>> {
     return StreamBuilder<StateMutation>(
       stream: stream,
       builder: (context, mut) {
-        StateStatus? status;
+        StateStatus status = StateStatus.none;
         if (!mut.hasData || mut.connectionState == ConnectionState.waiting) {
           status = StateStatus.none;
         } else {
-          status = mut.data?.status;
+          status = mut.data?.status ?? StateStatus.none;
         }
-        final T store = LayrzState.store as T;
-        return widget.builder(context, store, status);
+        return widget.builder(
+          context,
+          LayrzState.of(context) as T,
+          status,
+        );
       },
     );
   }

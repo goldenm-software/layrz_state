@@ -24,14 +24,18 @@ class StateBuilder<T> extends StatelessWidget {
     return StreamBuilder<StateMutation>(
       stream: stream,
       builder: (context, mut) {
-        StateStatus? status;
+        StateStatus status = StateStatus.none;
         if (!mut.hasData || mut.connectionState == ConnectionState.waiting) {
           status = StateStatus.none;
         } else {
-          status = mut.data?.status;
+          status = mut.data?.status ?? StateStatus.none;
         }
 
-        return builder(context, LayrzState.store as T, status);
+        return builder(
+          context,
+          LayrzState.of(context) as T,
+          status,
+        );
       },
     );
   }

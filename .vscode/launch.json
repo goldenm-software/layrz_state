@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "VSCode connected device",
+      "cwd": "example",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "VSCode connected device (Profile)",
+      "cwd": "example",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode":  "profile",
+      "args": [
+        "--profile",
+        "--purge-persistent-cache"
+      ]
+    }
+  ]
+}
